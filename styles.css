@@ -2,7 +2,6 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
 }
 
 body {
@@ -10,4 +9,145 @@ body {
     margin: 0;
     font-size: 14px;
     min-height: 100vh;
+    color: #eee;
+}
+
+h1,h2 {
+    font-size: 1.8rem;
+    color: #83CFDF;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+h3,h4,h5,h6 {
+    margin: 0;
+    color: #eee;
+    font-weight: bold;
+}
+
+
+/* HEADER */
+
+header {
+    margin: 0;
+    background-color: #252846;
+    padding: 13px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+form {
+    width: 70%;
+}
+
+input {
+    width: 100%;
+    background-color: #373B69;
+    border: 2px solid hsl(235, 31%, 55%);
+    color: #fff;
+    outline: none;
+    padding: 16px;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+::placeholder {
+  color: hsl(235, 31%, 65%);
+}
+
+.search:focus {
+    background-color: #22254b;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* HOME */
+
+main {
+    min-height: inherit;
+    background-color: #272532;
+}
+
+.carousel-container {
+    border: 1px solid red;
+    height: 50vh;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* MOVIE ITEM */
+
+.movie {
+    background-color: #3a3e6e;
+    border-radius: 3px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    margin: 1rem;
+    width: 300px;
+}
+
+
+img {
+    width: 100%;
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+.rating {
+    background-color: #22254b;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+}
+
+.overview {
+    background-color: #708ED2;
+    padding: 2rem;
+    position: absolute;
+    max-height: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+}
+
+.movie-info span.green {
+    color: rgb(39, 189, 39);
+}
+
+.movie-info span.orange {
+    color: orange;
+}
+
+.movie-info span.red {
+    color: rgb(189, 42, 42);
+}
+
+.movie:hover .overview {
+    transform: translateY(0);
 }
