@@ -3,12 +3,18 @@ const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.d
 const IMGPATH = "https://image.tmdb.org/t/p/w500/"
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?api_key=7d37187ed2f415898d56c8f1ebaaba4f&query=";
 
+const TRENDINGAPI = "https://api.themoviedb.org/3/trending/all/day?api_key=7d37187ed2f415898d56c8f1ebaaba4f&page=1"
+
 const main = document.querySelector('main');
 const moviesContainer = document.querySelector('.movies');
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const rightBtn = document.getElementById("right");
+const leftBtn = document.getElementById("left");
 
+getTrends();
 getMovies(APIURL);
+
 
 async function getMovies(url) {
     const res = await fetch(url);
@@ -25,7 +31,7 @@ function showMovies(movies) {
     movies.map((movie) => {
         const { poster_path, title, vote_average, overview } = movie;
         if(poster_path) {
-             const movieEl = document.createElement("div");
+            const movieEl = document.createElement("div");
             movieEl.classList.add('movie');
 
             movieEl.innerHTML = `
@@ -68,3 +74,40 @@ form.addEventListener("submit", (e) => {
         search.value = "";
     }
 });
+
+async function getTrends() {
+    const res = await fetch(TRENDINGAPI);
+    const data = await res.json();
+
+    showSlides(data.results);
+}
+
+function showSlides(results) {   
+    const slides = results.slice(0, 6);
+    const images = [];
+    let i = 0;
+    slides.forEach((slide) => {
+        images.push(IMGPATH + slide.poster_path);
+    })
+    document.slide.src = images[i];
+
+    rightBtn.addEventListener("click", () => {
+        if(i < images.length-1) {
+            i++;
+            document.slide.src = images[i];
+        } else {
+            i=0;
+            document.slide.src = images[i];
+        }
+    })
+
+    leftBtn.addEventListener("click", () => {
+        if(i <= 0) {
+            i = images.length - 1;
+            document.slide.src = images[i];
+        } else {
+            i--;
+            document.slide.src = images[i];
+        }
+    })
+}
