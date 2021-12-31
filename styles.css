@@ -76,11 +76,6 @@ main {
     background-color: #272532;
 }
 
-.carousel-container {
-    border: 1px solid red;
-    height: 50vh;
-}
-
 .category {
     display: flex;
     flex-direction: column;
